@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join as an Influencer</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f7f0fc 0%, #e9dff2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* --- FORM CARD --- */
+        .form-container {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 2.8rem 2.8rem 2.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 520px) {
+            .form-container {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+        }
+
+        /* --- HEADER --- */
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+        }
+
+        .form-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e0b2e;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .form-header h1 i {
+            color: #a855f7;
+            font-size: 2rem;
+        }
+
+        .form-header .subhead {
+            color: #5b4a6b;
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-top: 0.3rem;
+            letter-spacing: 0.3px;
+        }
+
+        .divider {
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #a855f7, #d946ef);
+            border-radius: 4px;
+            margin: 0.6rem auto 0;
+        }
+
+        /* --- FORM ELEMENTS --- */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2d1b3d;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.2px;
+        }
+
+        label i {
+            color: #a855f7;
+            width: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        label .optional {
+            font-weight: 400;
+            color: #8a7a9a;
+            font-size: 0.75rem;
+            margin-left: 0.3rem;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background: #ffffff;
+            border: 1.5px solid #e5d9ed;
+            border-radius: 16px;
+            transition: all 0.25s ease;
+            color: #1e0b2e;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15);
+            background: #fcfaff;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #b3a6c0;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+            line-height: 1.5;
+        }
+
+        /* --- INLINE ROW (city + country) --- */
+        .row-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        @media (max-width: 480px) {
+            .row-duo {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        /* --- RADIO GROUP --- */
+        .radio-group {
+            display: flex;
+            gap: 1.8rem;
+            padding-top: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #2d1b3d;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .radio-group input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #a855f7;
+            margin: 0;
+            flex-shrink: 0;
+            box-shadow: none;
+        }
+
+        /* --- CHECKBOX --- */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin: 0.8rem 0 1.8rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #a855f7;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+            box-shadow: none;
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #3d2a4d;
+            margin-bottom: 0;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        .checkbox-group label span {
+            font-weight: 600;
+            color: #1e0b2e;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 0.9rem 1.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.30);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(168, 85, 247, 0.40);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #f0e8f6;
+            color: #3d2a4d;
+            border: 1.5px solid #dccce8;
+        }
+
+        .btn-secondary:hover {
+            background: #e5d7ef;
+            border-color: #bca5cc;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        /* --- SUCCESS TOAST --- */
+        .toast {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1rem 1.4rem;
+            background: #e6f7e6;
+            border-left: 6px solid #22c55e;
+            border-radius: 16px;
+            color: #14532d;
+            font-weight: 500;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+            animation: slideUp 0.4s ease;
+        }
+
+        .toast i {
+            font-size: 1.4rem;
+            color: #22c55e;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- FOOTER NOTE --- */
+        .form-footer {
+            text-align: center;
+            margin-top: 1.8rem;
+            font-size: 0.75rem;
+            color: #9a8aaa;
+            letter-spacing: 0.3px;
+            border-top: 1px solid #eee6f2;
+            padding-top: 1.5rem;
+        }
+
+        .form-footer i {
+            color: #c084fc;
+        }
+
+        /* --- VALIDATION STYLING --- */
+        input.error,
+        select.error,
+        textarea.error {
+            border-color: #f87171;
+            background: #fef2f2;
+        }
+
+        .error-msg {
+            display: none;
+            color: #dc2626;
+            font-size: 0.78rem;
+            font-weight: 500;
+            margin-top: 0.3rem;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .error-msg.show {
+            display: flex;
+        }
+
+        /* --- RESPONSIVE TWEAKS --- */
+        @media (max-width: 400px) {
+            .btn {
+                min-width: 100%;
+            }
+            .form-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <!-- HEADER -->
+        <div class="form-header">
+            <h1>
+                <i class="fas fa-star"></i>
+                Join as an Influencer
+                <i class="fas fa-star"></i>
+            </h1>
+            <p class="subhead">We’d love to collaborate with you ✨</p>
+            <div class="divider"></div>
+        </div>
+
+        <!-- FORM -->
+        <form id="influencerForm" novalidate>
+
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName"><i class="fas fa-user"></i> Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g. Ananya Sharma" required />
+                <div class="error-msg" id="fullNameError"><i class="fas fa-exclamation-circle"></i> Please enter your full name.</div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email ID</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                <div class="error-msg" id="emailError"><i class="fas fa-exclamation-circle"></i> Please enter a valid email address.</div>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label for="phone"><i class="fas fa-phone-alt"></i> Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+                <div class="error-msg" id="phoneError"><i class="fas fa-exclamation-circle"></i> Please enter a valid phone number.</div>
+            </div>
+
+            <!-- City + Country -->
+            <div class="row-duo">
+                <div class="form-group">
+                    <label for="city"><i class="fas fa-city"></i> City</label>
+                    <input type="text" id="city" name="city" placeholder="Mumbai" required />
+                    <div class="error-msg" id="cityError"><i class="fas fa-exclamation-circle"></i> Please enter your city.</div>
+                </div>
+                <div class="form-group">
+                    <label for="country"><i class="fas fa-globe-asia"></i> Country</label>
+                    <input type="text" id="country" name="country" placeholder="India" required />
+                    <div class="error-msg" id="countryError"><i class="fas fa-exclamation-circle"></i> Please enter your country.</div>
+                </div>
+            </div>
+
+            <!-- Instagram Username -->
+            <div class="form-group">
+                <label for="instaUser"><i class="fab fa-instagram"></i> Instagram Username</label>
+                <input type="text" id="instaUser" name="instaUser" placeholder="@yourhandle" required />
+                <div class="error-msg" id="instaUserError"><i class="fas fa-exclamation-circle"></i> Please enter your Instagram username.</div>
+            </div>
+
+            <!-- Instagram Account Link -->
+            <div class="form-group">
+                <label for="instaLink"><i class="fas fa-link"></i> Instagram Account Link</label>
+                <input type="url" id="instaLink" name="instaLink" placeholder="https://instagram.com/yourhandle" required />
+                <div class="error-msg" id="instaLinkError"><i class="fas fa-exclamation-circle"></i> Please enter a valid Instagram URL.</div>
+            </div>
+
+            <!-- YouTube (Optional) -->
+            <div class="form-group">
+                <label for="youtube"><i class="fab fa-youtube"></i> YouTube Channel Link <span class="optional">(Optional)</span></label>
+                <input type="url" id="youtube" name="youtube" placeholder="https://youtube.com/@yourchannel" />
+            </div>
+
+            <!-- Followers -->
+            <div class="form-group">
+                <label for="followers"><i class="fas fa-users"></i> Followers</label>
+                <input type="text" id="followers" name="followers" placeholder="e.g. 50K, 1M, 2500" required />
+                <div class="error-msg" id="followersError"><i class="fas fa-exclamation-circle"></i> Please enter your follower count.</div>
+            </div>
+
+            <!-- Content Category -->
+            <div class="form-group">
+                <label for="category"><i class="fas fa-tag"></i> Content Category</label>
+                <select id="category" name="category" required>
+                    <option value="">▼ Select Category</option>
+                    <option value="Fashion & Beauty">Fashion &amp; Beauty</option>
+                    <option value="Travel & Lifestyle">Travel &amp; Lifestyle</option>
+                    <option value="Fitness & Health">Fitness &amp; Health</option>
+                    <option value="Food & Cooking">Food &amp; Cooking</option>
+                    <option value="Tech & Gadgets">Tech &amp; Gadgets</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Education & Career">Education &amp; Career</option>
+                    <option value="Parenting & Family">Parenting &amp; Family</option>
+                    <option value="Art & Photography">Art &amp; Photography</option>
+                    <option value="Music & Dance">Music &amp; Dance</option>
+                    <option value="Comedy & Entertainment">Comedy &amp; Entertainment</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error-msg" id="categoryError"><i class="fas fa-exclamation-circle"></i> Please select a content category.</div>
+            </div>
+
+            <!-- Brand Collaboration Radio -->
+            <div class="form-group">
+                <label><i class="fas fa-handshake"></i> Brand Collaboration</label>
+                <div class="radio-group">
+                    <label for="collabYes">
+                        <input type="radio" id="collabYes" name="collab" value="Yes" checked /> Yes
+                    </label>
+                    <label for="collabNo">
+                        <input type="radio" id="collabNo" name="collab" value="No" /> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- About Yourself -->
+            <div class="form-group">
+                <label for="about"><i class="fas fa-pen-fancy"></i> About Yourself</label>
+                <textarea id="about" name="about" placeholder="Tell us about your content, audience, and what excites you..." required></textarea>
+                <div class="error-msg" id="aboutError"><i class="fas fa-exclamation-circle"></i> Please tell us about yourself.</div>
+            </div>
+
+            <!-- Confirm Checkbox -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="confirm" name="confirm" required />
+                <label for="confirm"><span>✓</span> I confirm the information is correct.</label>
+            </div>
+            <div class="error-msg" id="confirmError" style="margin-top:-0.2rem; margin-bottom:0.8rem;"><i class="fas fa-exclamation-circle"></i> You must confirm the information.</div>
+
+            <!-- Buttons -->
+            <div class="btn-row">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+                <button type="reset" class="btn btn-secondary" id="resetBtn">
+                    <i class="fas fa-undo-alt"></i> Reset
+                </button>
+            </div>
+
+        </form>
+
+        <!-- Toast / Success Message -->
+        <div id="successToast" class="toast">
+            <i class="fas fa-check-circle"></i>
+            <span>Application submitted successfully! We’ll reach out soon. 🚀</span>
+        </div>
+
+        <!-- Footer -->
+        <div class="form-footer">
+            <i class="fas fa-shield-alt"></i> Your data is safe &bull; Powered by <strong>GitHub Pages</strong>
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const form = document.getElementById('influencerForm');
+            const toast = document.getElementById('successToast');
+
+            // ---- Helper: show field error ----
+            function setFieldError(inputId, errorId, condition) {
+                const input = document.getElementById(inputId);
+                const errorEl = document.getElementById(errorId);
+                if (!input || !errorEl) return;
+
+                if (condition) {
+                    input.classList.add('error');
+                    errorEl.classList.add('show');
+                } else {
+                    input.classList.remove('error');
+                    errorEl.classList.remove('show');
+                }
+            }
+
+            // ---- Validate a single field ----
+            function validateField(field) {
+                const id = field.id;
+                let valid = true;
+
+                switch (id) {
+                    case 'fullName':
+                        valid = field.value.trim().length >= 2;
+                        setFieldError('fullName', 'fullNameError', !valid);
+                        break;
+
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        valid = emailRegex.test(field.value.trim());
+                        setFieldError('email', 'emailError', !valid);
+                        break;
+
+                    case 'phone':
+                        const phoneRegex = /^[+\d\s\-()]{7,20}$/;
+                        valid = phoneRegex.test(field.value.trim());
+                        setFieldError('phone', 'phoneError', !valid);
+                        break;
+
+                    case 'city':
+                        valid = field.value.trim().length >= 1;
+                        setFieldError('city', 'cityError', !valid);
+                        break;
+
+                    case 'country':
+                        valid = field.value.trim().length >= 1;
+                        setFieldError('country', 'countryError', !valid);
+                        break;
+
+                    case 'instaUser':
+                        valid = field.value.trim().length >= 1;
+                        setFieldError('instaUser', 'instaUserError', !valid);
+                        break;
+
+                    case 'instaLink':
+                        try {
+                            const url = new URL(field.value.trim());
+                            valid = url.protocol === 'http:' || url.protocol === 'https:';
+                        } catch (_) {
+                            valid = false;
+                        }
+                        setFieldError('instaLink', 'instaLinkError', !valid);
+                        break;
+
+                    case 'followers':
+                        valid = field.value.trim().length >= 1;
+                        setFieldError('followers', 'followersError', !valid);
+                        break;
+
+                    case 'category':
+                        valid = field.value !== '';
+                        setFieldError('category', 'categoryError', !valid);
+                        break;
+
+                    case 'about':
+                        valid = field.value.trim().length >= 10;
+                        setFieldError('about', 'aboutError', !valid);
+                        break;
+
+                    default:
+                        break;
+                }
+                return valid;
+            }
+
+            // ---- Validate all required fields ----
+            function validateAll() {
+                const fields = [
+                    document.getElementById('fullName'),
+                    document.getElementById('email'),
+                    document.getElementById('phone'),
+                    document.getElementById('city'),
+                    document.getElementById('country'),
+                    document.getElementById('instaUser'),
+                    document.getElementById('instaLink'),
+                    document.getElementById('followers'),
+                    document.getElementById('category'),
+                    document.getElementById('about')
+                ];
+
+                let allValid = true;
+                fields.forEach(f => {
+                    if (!validateField(f)) allValid = false;
+                });
+
+                // Confirm checkbox
+                const confirmChk = document.getElementById('confirm');
+                const confirmErr = document.getElementById('confirmError');
+                if (!confirmChk.checked) {
+                    confirmErr.classList.add('show');
+                    allValid = false;
+                } else {
+                    confirmErr.classList.remove('show');
+                }
+
+                return allValid;
+            }
+
+            // ---- Submit handler ----
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Hide previous toast
+                toast.classList.remove('show');
+
+                const isValid = validateAll();
+
+                if (isValid) {
+                    // Show success toast
+                    toast.classList.add('show');
+
+                    // Optionally log data (for demo)
+                    const formData = new FormData(form);
+                    console.log('📝 Application Data:');
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`);
+                    }
+
+                    // Scroll to toast
+                    toast.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // You could also submit to a server here via fetch()
+                    // For GitHub Pages static demo, we just show the toast.
+                } else {
+                    // Focus first error field
+                    const firstError = document.querySelector('.error.show');
+                    if (firstError) {
+                        const input = firstError.closest('.form-group')?.querySelector('input, select, textarea');
+                        if (input) input.focus();
+                    }
+                }
+            });
+
+            // ---- Reset handler ----
+            document.getElementById('resetBtn').addEventListener('click', function(e) {
+                // Native reset clears fields but we also clear errors and toast
+                form.reset();
+
+                // Clear all error states
+                document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+                document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('show'));
+
+                // Hide toast
+                toast.classList.remove('show');
+
+                // Reset radio to "Yes" (default)
+                document.getElementById('collabYes').checked = true;
+
+                // Remove any leftover focus styles
+                document.activeElement?.blur();
+            });
+
+            // ---- Real-time validation on blur ----
+            const inputs = document.querySelectorAll(
+                '#fullName, #email, #phone, #city, #country, #instaUser, #instaLink, #followers, #category, #about'
+            );
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+                input.addEventListener('input', function() {
+                    // Remove error styling while typing (but only if it was already shown)
+                    if (this.classList.contains('error')) {
+                        const errorId = this.id + 'Error';
+                        const errEl = document.getElementById(errorId);
+                        if (errEl) {
+                            errEl.classList.remove('show');
+                            this.classList.remove('error');
+                        }
+                    }
+                });
+            });
+
+            // Confirm checkbox: clear error on change
+            document.getElementById('confirm').addEventListener('change', function() {
+                const err = document.getElementById('confirmError');
+                if (this.checked) {
+                    err.classList.remove('show');
+                } else {
+                    err.classList.add('show');
+                }
+            });
+
+            // ---- Category select: clear error on change ----
+            document.getElementById('category').addEventListener('change', function() {
+                if (this.value !== '') {
+                    this.classList.remove('error');
+                    document.getElementById('categoryError').classList.remove('show');
+                }
+            });
+
+            // ---- Initial: set default radio "Yes" ----
+            document.getElementById('collabYes').checked = true;
+
+        })();
+    </script>
+
+</body>
+</html>
